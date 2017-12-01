@@ -41,10 +41,8 @@ class Estrazione(object):
         pyautogui.click(pyautogui.center(pyautogui.locateOnScreen(path)))
 
 
-dataset = ("MECTRON", "01/01/2016..30/11/2017", u"01 - R.M.",)
+dataset = ("MECTRON", "01/01/2016"+chr(46)*2"30/11/2017", "01 - R"+chr(46)"M"+chr(46),)
 start = Setup()
 go = Estrazione(dataset)
 go.locate_on_screen('giac_focus.png')
 go.compiler()
-
-#print start.screen_width, start.screen_height

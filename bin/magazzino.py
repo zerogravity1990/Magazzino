@@ -1,6 +1,8 @@
 # -*- encoding: UTF-8 -*-
 
 import pyautogui
+import pyperclip
+import openpyxl
 
 ubicazioni = ["MECTRON", "ICAR", "IAAW0205", "IAARMDR1", "IAAH0105", "IAAH0104",
                 "IAAH0103", "IAAH0102", "IAAH0101", ]
@@ -40,8 +42,20 @@ class Estrazione(object):
     def locate_on_screen(self, path):
         pyautogui.click(pyautogui.center(pyautogui.locateOnScreen(path)))
 
+class Copiatore(object):
 
-dataset = ("MECTRON", "01/01/2016"+chr(46)*2"30/11/2017", "01 - R"+chr(46)"M"+chr(46),)
+    def get_data(self):
+        pass
+
+    def pasting_data(self, files):
+        wb = openpyxl.load_workbook(files)
+        sheet = wb.get_sheet_by_name('excel')
+        value = sheet['A1'].value
+        print value, type(value)
+        print type(wb)
+
+
+dataset = ("MECTRON", "01/01/2016"+chr(46)*2+"30/11/2017", "01 - R"+chr(46)+"M"+chr(46),)
 start = Setup()
 go = Estrazione(dataset)
 go.locate_on_screen('giac_focus.png')
